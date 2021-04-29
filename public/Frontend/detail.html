@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- mobile metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>Cari Univ App</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- fevicon -->
+  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <!-- bootstrap css -->
+  <link href="style/main.css" rel="stylesheet" />
+  <!-- style css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Responsive-->
+  <link rel="stylesheet" href="css/responsive.css">  
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <!-- Tweaks for older IEs-->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+      }
+    </style>
+</head>
+
+  <body>
+    <div class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col logo_section">
+              <div class="full">
+                <div class="center-desk">
+                  <div class="logo">
+                    <a href="index.html"><img src="images/arcmap.png" alt="Cari Univ App" width="45px">Cari Univ App</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6">
+         
+               <div class="menu-area">
+                <div class="limit-box">
+                  <nav class="main-menu ">
+                    <ul class="menu-area-main">
+                      <li class="active"> <a href="index.html">Home</a> </li>
+                      <li> <a href="login.html">Login</a> </li>
+                     </ul>
+                   </nav>
+                 </div>
+               </div> 
+              </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+    <section class="page-content">
+      <div class="page-home">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div id="map" style="width: 1485px; height: 550px"></div>
+              </div>
+          </div>
+          <div class="container mb-5">
+            <div class="row mt-5 mb-5">
+              <div class="col-12 text-center pt-4">
+                <h2>
+                  <b>Universitas Islam Negeri Maulana Malik Ibrahim Malang</b>
+                </h2>
+              </div>
+            </div>
+            <div class="row pt-4">
+              <div class="col-4 text-center">
+                <img
+                  src="https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png"
+                  class="w-50"
+                  alt=""
+                />
+              </div>
+              <div class="col-4">
+                <div class="row">
+                  <div class="col-12">
+                    <h6><b>Alamat</b></h6>
+                    <h6 class="text-secondary">
+                      Jl. Gajayana No. 50 Lowokwaru
+                    </h6>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <h6><b>Kabupaten/Kota</b></h6>
+                    <h6 class="text-secondary">Kota Malang</h6>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <h6><b>Provinsi</b></h6>
+                    <h6 class="text-secondary">Jawa Timur</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="row">
+                  <div class="col-12">
+                    <h6><b>Website</b></h6>
+                    <a href="http://www.uin-malang.ac.id" target="_blank"
+                      ><h6 class="text-secondary">www.uin-malang.ac.id</h6></a
+                    >
+                  </div>
+                  <div class="col-12 mt-4">
+                    <h6><b>No. Telepon</b></h6>
+                    <h6 class="text-secondary">(0321) 362 392</h6>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <h6><b>Jumlah Mahasiswa</b></h6>
+                    <h6 class="text-secondary">10.102</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="pt-4 pb-2">© 2020 Cari Univ App. All rights reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoibGluZ2dhd2FoeXUiLCJhIjoiY2tuYzBsdTI3MXZoNDJ2bGdsMXZzcmszbCJ9.2-I9dM3g_HpoPcFbZzU9qQ";
+
+      var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v10",
+        center: [112.60767, -7.952371],
+        zoom: 15,
+      });
+
+      map.addControl(new mapboxgl.NavigationControl());
+
+      var geolocate = new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+      });
+
+      map.addControl(geolocate);
+
+      // initialize the map canvas to interact with later
+      var canvas = map.getCanvasContainer();
+
+      // an arbitrary start will always be the same
+      // only the end or destination will change
+      var start = [112.60767, -7.952371];
+
+      // this is where the code for the next step will go
+      function getRoute(end) {
+        // make a directions request using cycling profile
+        // an arbitrary start will always be the same
+        // only the end or destination will change
+        var start = [112.60767, -7.952371];
+        var url =
+          "https://api.mapbox.com/directions/v5/mapbox/cycling/" +
+          start[0] +
+          "," +
+          start[1] +
+          ";" +
+          end[0] +
+          "," +
+          end[1] +
+          "?steps=true&geometries=geojson&access_token=" +
+          mapboxgl.accessToken;
+
+        // make an XHR request https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+        var req = new XMLHttpRequest();
+        req.open("GET", url, true);
+        req.onload = function () {
+          var json = JSON.parse(req.response);
+          var data = json.routes[0];
+          var route = data.geometry.coordinates;
+          var geojson = {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "LineString",
+              coordinates: route,
+            },
+          };
+          // if the route already exists on the map, reset it using setData
+          if (map.getSource("route")) {
+            map.getSource("route").setData(geojson);
+          } else {
+            // otherwise, make a new request
+            map.addLayer({
+              id: "route",
+              type: "line",
+              source: {
+                type: "geojson",
+                data: {
+                  type: "Feature",
+                  properties: {},
+                  geometry: {
+                    type: "LineString",
+                    coordinates: geojson,
+                  },
+                },
+              },
+              layout: {
+                "line-join": "round",
+                "line-cap": "round",
+              },
+              paint: {
+                "line-color": "#3887be",
+                "line-width": 5,
+                "line-opacity": 0.75,
+              },
+            });
+          }
+          // add turn instructions here at the end
+        };
+        req.send();
+      }
+
+      var geojson = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [112.60767, -7.952371],
+            },
+            properties: {
+              title: "UIN Maulana Malik Ibrahim Malang",
+              description: "Jl. Gajayana No. 50 Lowokwaru Kota Malang",
+              image:
+                "https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png",
+              icon: {
+                iconUrl:
+                  "https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png",
+                iconSize: [40, 40], // size of the icon
+                iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+                popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+                className: "dot",
+              },
+            },
+          },
+        ],
+      };
+
+      // add markers to map
+      geojson.features.forEach(function (marker) {
+        // create a DOM element for the marker
+        var el = document.createElement("div");
+        el.className = "marker";
+        el.style.backgroundImage =
+          "url(" + marker.properties.icon.iconUrl + ")";
+        el.style.width = marker.properties.icon.iconSize[0] + "px";
+        el.style.height = marker.properties.icon.iconSize[1] + "px";
+        el.style.backgroundSize = "100%";
+
+        // add marker to map
+        new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                "<p><strong>" +
+                  marker.properties.title +
+                  '</strong></p><p class="text-secondary">' +
+                  marker.properties.description +
+                  '</p><img src="' +
+                  marker.properties.image +
+                  '" class="w-100" alt="">'
+              )
+          )
+          .addTo(map);
+      });
+
+      map.on("load", function () {
+        geolocate.on("geolocate", function (e) {
+          var lon = e.coords.longitude;
+          var lat = e.coords.latitude;
+          var position = [lon, lat];
+          console.log(position);
+
+          // make an initial directions request that
+          // starts and ends at the same location
+          getRoute(start);
+
+          // Add starting point to the map
+          map.addLayer({
+            id: "point",
+            type: "circle",
+            source: {
+              type: "geojson",
+              data: {
+                type: "FeatureCollection",
+                features: [
+                  {
+                    type: "Feature",
+                    properties: {},
+                    geometry: {
+                      type: "Point",
+                      coordinates: start,
+                    },
+                  },
+                ],
+              },
+            },
+            paint: {
+              "circle-radius": 10,
+              "circle-color": "#3887be",
+            },
+          });
+
+          var end = {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  type: "Point",
+                  coordinates: [lon, lat],
+                },
+              },
+            ],
+          };
+
+          if (map.getLayer("end")) {
+            map.getSource("end").setData(end);
+          } else {
+            map.addLayer({
+              id: "end",
+              type: "circle",
+              source: {
+                type: "geojson",
+                data: {
+                  type: "FeatureCollection",
+                  features: [
+                    {
+                      type: "Feature",
+                      properties: {},
+                      geometry: {
+                        type: "Point",
+                        coordinates: [lon, lat],
+                      },
+                    },
+                  ],
+                },
+              },
+              paint: {
+                "circle-radius": 10,
+                "circle-color": "#f30",
+              },
+            });
+          }
+          getRoute([lon, lat]);
+        });
+        geolocate.trigger();
+      });
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="script/navbar-scroll.js"></script>
+  </body>
+</html>

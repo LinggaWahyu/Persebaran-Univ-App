@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- mobile metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>Cari Univ App</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- fevicon -->
+  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <!-- bootstrap css -->
+  <link href="style/main.css" rel="stylesheet" />
+  <!-- style css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Responsive-->
+  <link rel="stylesheet" href="css/responsive.css">  
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <!-- Tweaks for older IEs-->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+      }
+    </style>
+</head>
+<!-- body -->
+
+<body class="main-layout">
+  <!-- loader  -->
+  <div class="loader_bg">
+    <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+  </div>
+  <!-- end loader -->
+  <!-- header -->
+  <header>
+    <!-- header inner -->
+    <div class="header-top">
+      <div class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col logo_section">
+              <div class="full">
+                <div class="center-desk">
+                  <div class="logo">
+                    <a href="index.html"><img src="images/arcmap.png" alt="Cari Univ App" width="45px">Cari Univ App</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6">
+         
+               <div class="menu-area">
+                <div class="limit-box">
+                  <nav class="main-menu ">
+                    <ul class="menu-area-main">
+                      <li class="active"> <a href="index.html">Home</a> </li>
+                      <li> <a href="#peta">Peta</a> </li>
+                      <li> <a href="#cari">Cari Universitas</a> </li>
+                      <li> <a href="#hubungi">Hubungi Kami</a> </li>
+                      <li> <a href="#tentang">Tentang Kami</a> </li>
+                      <li class="active"> <a href="#contact">Login</a> </li>
+                     </ul>
+                   </nav>
+                 </div>
+               </div> 
+              </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <!-- end header inner -->
+
+     <!-- end header -->
+     <section class="slider_section">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+
+            <div class="container-fluid padding_dd">
+              <div class="carousel-caption">
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="text-bg pt-5">
+                     <span>Selamat Datang di,</span>
+                      <h1>Cari Univ App</h1>
+                      <p class="text-bg pt-5">Cari informasi universitas favoritmu disini. Tanpa login serta bisa diakses kapanpun dan dimanapun. Menemukan informasi dengan mudah dan jangan lupa, Semangat!</p>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="images_box">
+                      <figure><img src="images/arcmap.png"></figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+
+            <div class="container-fluid padding_dd">
+              <div class="carousel-caption">
+
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="text-bg pt-5">
+                      <span>Hi,</span>
+                      <h1>Calon Mahasiswa</h1>
+                      <p class="text-bg pt-5">Semoga lulus seleksi sesuai universitas yang diinginkan. Berprestasi dan berproses di tempat baru sesuai universitas impianmu</p>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="images_box">
+                      <figure><img src="images/mahasiswa.png"></figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="carousel-item">
+
+            <div class="container-fluid padding_dd">
+              <div class="carousel-caption">
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="text-bg pt-5">
+                      <span>Temukan,</span>
+                      <h1>Jarak Uiversitas</h1>
+                      <p class="text-bg pt-5">Kami akan menampilkan jarak universitas yang sesuai dengan jarak anda saat ini. Dengan itu, diharapkan dapat menentukan universitas pilihan sesuai jarak masing - masing</p>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="images_box">
+                      <figure><img src="images/jarak.png"></figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+</section>
+</div>
+</header>
+
+<!-- vegetable -->
+<div id="peta" class="peta">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div  class="titlepage">
+          <h2> Peta <strong class="llow">Persebaran</strong> </h2>
+          <div class="row mt-3">
+            <div class="col-12">
+              <div id="map" style="width: 1100px; height: 550px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end vegetable -->
+
+<!-- cari univ -->
+<div id="cari" class="cari">
+  <div class="container">
+   <div class="row">
+     <div class="col-md-12">
+        <div class="titlepage">
+          <h2>Cari <strong class="llow">Universitas</strong></h2>
+          <div class="container mb-5">
+            <div class="row mt-5 mb-5">
+              <div class="col-12">
+                <!-- Nav tabs -->
+                <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a
+                      class="nav-item nav-link active"
+                      id="home-tab"
+                      data-toggle="tab"
+                      href="#home"
+                      role="tab"
+                      aria-controls="home"
+                      aria-selected="true"
+                      >Search by Region</a
+                    >
+                    <a
+                      class="nav-item nav-link"
+                      id="settings-tab"
+                      data-toggle="tab"
+                      href="#settings"
+                      role="tab"
+                      aria-controls="settings"
+                      aria-selected="false"
+                      >Search by Keyword</a
+                    >
+                    <a
+                      class="nav-item nav-link"
+                      id="ilmu-tab"
+                      data-toggle="tab"
+                      href="#ilmu"
+                      role="tab"
+                      aria-controls="ilmu"
+                      aria-selected="false"
+                      >Search by Bidang Keilmuan</a
+                    >
+                </nav>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="row align-items-center justify-content-center mt-4">
+                      <form action=""></form>
+                        <div class="col-lg-4 justify-content-center">
+                          <div class="form-group">
+                            <label for="provinsi">Provinsi</label>
+                            <select class="form-control" name="provinsi" id="provinsi">
+                              <option>Jawa Timur</option>
+                              <option>Jawa Tengah</option>
+                              <option>Jawa Barat</option>
+                              <option>Bali</option>
+                              <option>Sumatera Barat</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 justify-content-center">
+                          <div class="form-group">
+                            <label for="kabupaten">Kabupaten</label>
+                            <select class="form-control" name="kabupaten" id="kabupaten">
+                              <option>Blitar</option>
+                              <option>Malang</option>
+                              <option>Kediri</option>
+                              <option>Jombang</option>
+                              <option>Mojokerto</option>
+                            </select>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 ml-2 mt-4">Search</button>
+                      </form>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="settings"
+                    role="tabpanel"
+                    aria-labelledby="settings-tab"
+                  >
+                    <div class="row align-items-center mt-4">
+                      <div class="col-lg-12 justify-content-center">
+                        <form action="">
+                          <div class="input-group">
+                            <div class="form-inline ml-auto mr-auto">
+                              <input
+                                type="search"
+                                id="form1"
+                                class="form-control"
+                                placeholder="Search"
+                              />
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                              <i class="fa fa-search"></i>
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="ilmu"
+                    role="tabpanel"
+                    aria-labelledby="ilmu-tab"
+                  >
+                  <div class="row align-items-center justify-content-center mt-4">
+                    <div class="col-lg-12 justify-content-center">
+                      <form action=""></form>
+                        <div class="form-group">
+                          <label for="bidang_keilmuan">Bidang Keilmuan</label>
+                          <select class="form-control" name="bidang_keilmuan" id="bidang_keilmuan">
+                            <option value="Matematika dan Ilmu Pengetahuan Alam (MIPA)">Matematika dan Ilmu Pengetahuan Alam (MIPA)</option>
+                            <option value="Ilmu Tanaman">Ilmu Tanaman</option>
+                            <option value="Ilmu Hewani">Ilmu Hewani</option>
+                            <option value="Ilmu Kedokteran">Ilmu Kedokteran</option>
+                            <option value="Ilmu Kesehatan">Ilmu Kesehatan</option>
+                            <option value="Ilmu Teknik">Ilmu Teknik</option>
+                            <option value="Ilmu Ekonomi">Ilmu Ekonomi</option>
+                            <option value="Ilmu Sosial Humaniora">Ilmu Sosial Humaniora</option>
+                            <option value="Agama dan Filsafat">Agama dan Filsafat</option>
+                            <option value="Seni, Desain dan Media">Seni, Desain dan Media</option>
+                            <option value="Ilmu Pendidikan">Ilmu Pendidikan</option>
+                          </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 mt-2">Search</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container mt-5">
+            <div class="row justify-content-center mt-5 pt-5">
+              <div class="col-lg-4 col-md-4 mb-5">
+                <div class="card shadow p-3 bg-white rounded">
+                  <div class="row align-items-center">
+                    <div class="col-4">
+                      <img
+                        src="https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png"
+                        class="w-100"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-8">
+                      <h6><b>Universitas Islam Negeri Malang</b></h6>
+                      <p class="text-secondary">Malang, Jawa Timur</p>
+                      <a href="detail.html" class="btn btn-primary">Detail</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 mb-5">
+                <div class="card shadow p-3 bg-white rounded">
+                  <div class="row align-items-center">
+                    <div class="col-4">
+                      <img
+                        src="https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png"
+                        class="w-100"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-8">
+                      <h6><b>Universitas Islam Negeri Malang</b></h6>
+                      <p class="text-secondary">Malang, Jawa Timur</p>
+                      <a href="detail.html" class="btn btn-primary">Detail</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 mb-5">
+                <div class="card shadow p-3 bg-white rounded">
+                  <div class="row align-items-center">
+                    <div class="col-4">
+                      <img
+                        src="https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png"
+                        class="w-100"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-8">
+                      <h6><b>Universitas Islam Negeri Malang</b></h6>
+                      <p class="text-secondary">Malang, Jawa Timur</p>
+                      <a href="detail.html" class="btn btn-primary">Detail</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 mb-5">
+                <div class="card shadow p-3 bg-white rounded">
+                  <div class="row align-items-center">
+                    <div class="col-4">
+                      <img
+                        src="https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png"
+                        class="w-100"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-8">
+                      <h6><b>Universitas Islam Negeri Malang</b></h6>
+                      <p class="text-secondary">Malang, Jawa Timur</p>
+                      <a href="detail.html" class="btn btn-primary">Detail</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 mb-5">
+                <div class="card shadow p-3 bg-white rounded">
+                  <div class="row align-items-center">
+                    <div class="col-4">
+                      <img
+                        src="https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png"
+                        class="w-100"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-8">
+                      <h6><b>Universitas Islam Negeri Malang</b></h6>
+                      <p class="text-secondary">Malang, Jawa Timur</p>
+                      <a href="detail.html" class="btn btn-primary">Detail</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+   </div>
+  </div>
+</div>
+    <!-- end contact -->
+
+<!-- contact -->
+<div id="tentang" class="peta">
+  <div class="container">
+   <div class="row">
+     <div class="col-md-12">
+        <div class="titlepage">
+          <h2>Tentang <strong class="llow">Kami</strong></h2>
+        </div>
+     </div>
+     <div>
+       <p>Masa – masa saat ini adalah masa dimana pendaftaran perguruan tinggi dibuka. Banyak calon mahasiswa baru yang mencari informasi mengenai universitas incarannya secara manual. Baik melalui website resmi ataupun informasi - informasi orang diluar sana. Dikarenakan banyaknya informasi yang nantinya akan diperoleh calon mahasiswa baru, tentu akan membuatnya sedikit bingung dan banyak opini yang dia dapatkan. Sehingga informasi tersebut akan lebih baik untuk dipusatkan dengan tingkat kebenaran yang tinggi untuk masing – masing data informasi universitasnya.</p>
+       <br><p>Dengan adanya permasalah tersebut, memunculkan ide untuk membuat Sistem Informasi Geografis guna memudahkan pencarian nama – nama universitas beserta informasi penting dari masing – masing universitas. Dengan adanya sistem informasi geografis ini diharapkan dapat mempermudah calon mahasiswa baru untuk memperoleh data yang ingin dia dapatkan dengan lebih mudah, efisien, dan terpercaya. </p>
+     </div>
+   </div>
+  </div>
+</div>
+    <!-- end contact -->
+
+<!-- contact -->
+<div id="hubungi" class="contact">
+  <div class="container">
+   <div class="row">
+     <div class="col-md-12 pt-5">
+                <div class="titlepage">
+                  <h2>Hubungi <strong class="llow">Kami</strong></h2>
+                </div>
+   </div>
+
+</div>
+    <div class="white_color">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+           <form class="contact_bg">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-12 form">
+                  <h5 class="title"><b>Kelompok 5</b></h5>
+                  <p>Jl. Gajayana No.50, Dinoyo, Kec. Lowokwaru, Kota Malang, Jawa Timur</p>
+                  <p class="pt-5"><b>65144</b></p>
+                  <p class="pt-5">+6285209187654</p>
+                  <p>cariunivapp@gmail.com</p>
+                </div>
+              </div>
+            </form>
+          </div>
+            </div>
+      
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+          <div id="map-contact" style="width: 535px; height: 350px">
+          </div>
+          </div>
+           </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+</div>
+    <!-- end contact -->
+
+    <!--  footer -->
+    <footr>
+      <div class="footer ">
+        <div class="copyright">
+          <div class="container">
+            <p>Copyright © 2021 Cari Univ App</p>
+          </div>
+        </div>
+      </div>
+    </footr>
+
+    <script type="text/javascript">
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoibGluZ2dhd2FoeXUiLCJhIjoiY2tuYzBsdTI3MXZoNDJ2bGdsMXZzcmszbCJ9.2-I9dM3g_HpoPcFbZzU9qQ";
+
+      var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [112.60767, -7.952371],
+        zoom: 14,
+      });
+
+      var map_contact= new mapboxgl.Map({
+        container: "map-contact",
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [112.60767, -7.952371],
+        zoom: 14,
+      });
+
+      var geojson = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [112.60767, -7.952371],
+            },
+            properties: {
+              title: "UIN Maulana Malik Ibrahim Malang",
+              description: "Jl. Gajayana No. 50 Lowokwaru Kota Malang",
+              image:
+                "https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png",
+              icon: {
+                iconUrl:
+                  "https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png",
+                iconSize: [40, 40], // size of the icon
+                iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+                popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+                className: "dot",
+              },
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [112.6116717, -7.9525043],
+            },
+            properties: {
+              title: "Universitas Brawijaya",
+              description: "Jl. Veteran Lowokwaru Kota Malang",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Logo_Universitas_Brawijaya.svg/1200px-Logo_Universitas_Brawijaya.svg.png",
+              icon: {
+                iconUrl:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Logo_Universitas_Brawijaya.svg/1200px-Logo_Universitas_Brawijaya.svg.png",
+                iconSize: [40, 40], // size of the icon
+                iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+                popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+                className: "dot",
+              },
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [112.6152033, -7.961259],
+            },
+            properties: {
+              title: "Universitas Negeri Malang",
+              description: "Jl. Semarang No. 5 Lowokwaru Kota Malang",
+              image:
+                "https://um.ac.id/wp-content/uploads/2019/03/Lambang-UM.png",
+              icon: {
+                iconUrl:
+                  "https://um.ac.id/wp-content/uploads/2019/03/Lambang-UM.png",
+                iconSize: [40, 40], // size of the icon
+                iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+                popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+                className: "dot",
+              },
+            },
+          },
+        ],
+      };
+
+      // add markers to map
+      geojson.features.forEach(function (marker) {
+        // create a DOM element for the marker
+        var el = document.createElement("div");
+        el.className = "marker";
+        el.style.backgroundImage =
+          "url(" + marker.properties.icon.iconUrl + ")";
+        el.style.width = marker.properties.icon.iconSize[0] + "px";
+        el.style.height = marker.properties.icon.iconSize[1] + "px";
+        el.style.backgroundSize = "100%";
+
+        // add marker to map
+        new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                "<h5><b>" +
+                  marker.properties.title +
+                  '</b></h5><p class="text-secondary">' +
+                  marker.properties.description +
+                  '</p><img src="' +
+                  marker.properties.image +
+                  '" class="w-75 ml-3" alt=""><br><br></a><a href="detail.html" class="btn btn-primary">Detail</a>'
+              )
+          )
+          .addTo(map);
+      });
+    </script>
+
+          <!-- end footer -->
+          <!-- Javascript files-->
+          <script src="js/jquery.min.js"></script>
+          <script src="js/popper.min.js"></script>
+          <script src="js/bootstrap.bundle.min.js"></script>
+          <script src="js/jquery-3.0.0.min.js"></script>
+          <script src="js/plugin.js"></script>
+          <!-- sidebar -->
+          <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+          <script src="js/custom.js"></script>
+          <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+
+</body>
+
+</html>
