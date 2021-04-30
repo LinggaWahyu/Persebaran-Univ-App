@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UniversitasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin', function () {
+    return view('admin/index');
+});
+// Route::get('/universitas', function () {
+//     return view('admin/universitas');
+// });
+Route::get('/tambah_universitas', function () {
+    return view('admin/tambah_universitas');
+});
+
+Route::resource('/universitas', 'App\Http\Controllers\UniversitasController');
