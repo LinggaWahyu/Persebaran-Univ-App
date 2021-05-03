@@ -13,7 +13,7 @@
               <h1 class="m-0 text-dark">Data Universitas</h1>
             </div><!-- /.col -->
             <div class="col-sm-6 mt-3 text-right">
-              <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/universitas/create">Tambah Universitas</a>
+              <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('universitas.create') }}">Tambah Universitas</a>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -68,7 +68,7 @@
                     <tbody>
                       @foreach($univ as $unv)
                       <tr>
-                        <td><img src="https://kadowisudaku.com/wp-content/uploads/2020/04/UIN-Maulana-Malik-Ibrahim-Malang.png" class="w-50" alt=""></td>
+                        <td><img src="{{ asset(Storage::url($unv->logo)) }}" class="w-50" alt=""></td>
                         <td>{{$unv->nama}}</td>
                         <td>{{$unv->alamat}}</td>
                         <td>{{$unv->provinsi}}</td>
@@ -79,18 +79,14 @@
                         <td>{{$unv->no_telp}}</td>
                         <td>{{$unv->status}}</td>
                         <td><ul>
-                          <li>Matematika dan Ilmu Pengetahuan Alam (MIPA)</li>
-                          <li>Ilmu Kedokteran</li>
-                          <li>Ilmu Kesehatan</li>
-                          <li>Ilmu Teknik</li>
-                          <li>Ilmu Bahasa</li>
-                          <li>Agama dan Filsafat</li>
-                          <li>Ilmu Pendidikan</li>
+                          @foreach($unv->bidang_keilmuan as $bidang_keilmuan)
+                            <li>{{ $bidang_keilmuan }}</li>
+                          @endforeach
                         </ul></td>
                         <td>{{$unv->jumlah_mahasiswa}}</td>
                         <td class="text-center">
-                          <a href="/universitas/{{ $unv->id }}/edit" class="btn btn-primary" title="Edit"><i class="fas fa-pen" style="font-size: 12px"></i></a>
-                          <form action="/universitas/{{ $unv->id }}" method="post" class="d-inline">
+                          <a href="{{ route('universitas.edit', $unv->id) }}" class="btn btn-primary" title="Edit"><i class="fas fa-pen" style="font-size: 12px"></i></a>
+                          <form action="{{ route('universitas.destroy', $unv->id) }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
                             <button type="submit"class="btn btn-danger"><i class="fas fa-trash" style="font-size: 12px"></i></button>

@@ -205,21 +205,21 @@ $(function () {
   });
 
   // Donut Chart
-  var pieChartCanvas = $("#sales-chart-canvas").get(0).getContext("2d");
-  var pieData = {
-    labels: [
-      "Kementerian Riset Teknologi dan Pendidikan Tinggi",
-      "Kementerian Agama",
-      "Kementerian Kesehatan",
-      "Kementerian Komunikasi dan Informatika",
-    ],
-    datasets: [
-      {
-        data: [30, 12, 20, 18],
-        backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#92409F"],
-      },
-    ],
-  };
+  // var pieChartCanvas = $("#sales-chart-canvas").get(0).getContext("2d");
+  // var pieData = {
+  //   labels: [
+  //     "Kementerian Riset Teknologi dan Pendidikan Tinggi",
+  //     "Kementerian Agama",
+  //     "Kementerian Kesehatan",
+  //     "Kementerian Komunikasi dan Informatika",
+  //   ],
+  //   datasets: [
+  //     {
+  //       data: [30, 12, 20, 18],
+  //       backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#92409F"],
+  //     },
+  //   ],
+  // };
   var pieOptions = {
     legend: {
       display: false,

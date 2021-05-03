@@ -32,7 +32,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ $count_univ }}</h3>
 
                 <p>Universitas</p>
               </div>
@@ -135,3 +135,48 @@
   </div>
   <!-- /.content-wrapper -->
 @endsection
+
+@push('addon-script')
+    <script>
+      var pieChartCanvas = $("#sales-chart-canvas")
+        .get(0)
+        .getContext("2d");
+      var pieData = {
+        labels: [
+          "Kementerian Riset Teknologi dan Pendidikan Tinggi", 
+          "Kementerian Agama", 
+          "Kementerian Dalam Negeri", 
+          "Kementerian Energi dan Sumber Daya Mineral",
+          "Kementerian Hukum dan HAM",
+          "Kementerian Pariwisata",
+          "Kementerian Kesehatan",
+          "Kementerian Keuangan",
+          "Kementerian Komunikasi dan Informatika",
+          "Kementerian Perhubungan",
+          "Kementerian Perindustrian",
+          "Kementerian Pertanian",
+          "Kementerial Sosial"
+        ],
+        datasets: [
+          {
+            data: [
+              {{ $count_univ_by_status['Kementerian Riset Teknologi dan Pendidikan Tinggi'] }}, 
+              {{ $count_univ_by_status['Kementerian Agama'] }}, 
+              {{ $count_univ_by_status['Kementerian Dalam Negeri'] }}, 
+              {{ $count_univ_by_status['Kementerian Energi dan Sumber Daya Mineral'] }},
+              {{ $count_univ_by_status['Kementerian Hukum dan HAM'] }},
+              {{ $count_univ_by_status['Kementerian Pariwisata'] }},
+              {{ $count_univ_by_status['Kementerian Kesehatan'] }},
+              {{ $count_univ_by_status['Kementerian Keuangan'] }},
+              {{ $count_univ_by_status['Kementerian Komunikasi dan Informatika'] }},
+              {{ $count_univ_by_status['Kementerian Perhubungan'] }},
+              {{ $count_univ_by_status['Kementerian Perindustrian'] }},
+              {{ $count_univ_by_status['Kementerian Pertanian'] }},
+              {{ $count_univ_by_status['Kementerian Sosial'] }},
+            ],
+            backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#17A2B8", "#7A9693", "#68F3F8", "#BAED10", "#51AC19", "#B92E34", "#70DB93", "#DBC0B4", "#C49474", "#FFD700"]
+          }
+        ]
+      };
+    </script>
+@endpush

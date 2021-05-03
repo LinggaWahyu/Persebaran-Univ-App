@@ -2,23 +2,6 @@
 
 @section('title', 'Admin | Tambah Univ')
 @section('container')
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-
-    <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
-    <link
-      href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
-      rel="stylesheet"
-    />
-
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -39,13 +22,22 @@
           <!-- Main row -->
           <div class="row">
             <div class="col-12">
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                  </div>
+              @endif
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Tambah Data Universitas Cari Univ App</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form action="/universitas" enctype="multipart/form-data" method="POST">
+                    <form action="{{ route('universitas.store') }}" id="locations" enctype="multipart/form-data" method="POST">
                       @csrf
                       <div class="input-group mb-3">
                           <div class="input-group-prepend">
@@ -63,21 +55,19 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1" style="width: 120px;">Provinsi</span>
                           </div>
-                          <select name="id_provinsi" class="custom-select">
-                            <option value="1">Jawa Timur</option>
-                            <option value="2">Jawa Tengah</option>
-                            <option value="3">Jawa Barat</option>
+                          <select name="id_provinsi" id="provinces_id" class="custom-select" v-if="provinces" v-model="provinces_id">
+                            <option v-for="province in provinces" :value="province.id">@{{ province.name }}</option>
                           </select>
+                          <select v-else class="form-control"></select>
                       </div>
                       <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1" style="width: 140px;">Kabupaten/Kota</span>
                           </div>
-                          <select name="id_kab_kota" class="custom-select">
-                            <option value="1">Malang</option>
-                            <option value="2">Blitar</option>
-                            <option value="3">Probolinggo</option>
+                          <select name="id_kab_kota" id="regencies_id" class="custom-select" v-if="regencies" v-model="regencies_id">
+                            <option v-for="regency in regencies" :value="regency.id">@{{ regency.name }}</option>
                           </select>
+                          <select v-else class="form-control"></select>                          
                       </div>
                       <div class="input-group mb-3">
                           <div class="input-group-prepend">
@@ -108,10 +98,9 @@
                             <span class="input-group-text" for="inputGroupSelect01" style="width: 120px;">Status</span>
                           </div>
                           <select class="custom-select" id="inputGroupSelect01" name="status">
-                            <option value="Kementerian Riset dan Pendidikan Tinggi">Kementerian Riset dan Pendidikan Tinggi</option>
-                            <option value="Kementerian Agama">Kementerian Agama</option>
-                            <option value="Kementerian Kesehatan">Kementerian Kesehatan</option>
-                            <option value="Kementerian Komunikasi dan Informatika">Kementerian Komunikasi dan Informatika</option>
+                            @foreach ($statuses as $status)
+                                <option value="{{ $status }}">{{ $status }}</option>
+                            @endforeach
                           </select>
                       </div>
                       <div class="input-group form-group mb-3">
@@ -216,7 +205,49 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-<script type="text/javascript">
+@endsection
+
+@push('addon-script')
+    <script src="/vendor/vue/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var locations = new Vue({
+        el: "#locations",
+        mounted() {
+            this.getProvincesData();
+        },
+        data: {
+            provinces: null,
+            regencies: null,
+            provinces_id: null,
+            regencies_id: null,
+        },
+        methods: {
+            getProvincesData() {
+                var self = this;
+                axios.get('{{ route('api-provinces') }}')
+                    .then(function(response) {
+                        self.provinces = response.data;
+                    });
+            },
+            getRegenciesData() {
+                var self = this;
+                axios.get('{{ url('api/regencies') }}/' + self.provinces_id)
+                    .then(function(response) {
+                        self.regencies = response.data;
+                    });
+            },
+        },
+        watch: {
+            provinces_id: function(val, oldVal) {
+                this.regencies_id = null;
+                this.getRegenciesData();
+            }
+        },
+      });
+    </script>
+
+    <script type="text/javascript">
     mapboxgl.accessToken =
         "pk.eyJ1IjoibGluZ2dhd2FoeXUiLCJhIjoiY2tuYzBsdTI3MXZoNDJ2bGdsMXZzcmszbCJ9.2-I9dM3g_HpoPcFbZzU9qQ";
 
@@ -240,5 +271,5 @@
         marker.setLngLat(e.lngLat).addTo(map);
       });
   </script>
-@endsection
+@endpush
   

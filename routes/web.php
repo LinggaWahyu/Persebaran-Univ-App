@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UniversitasController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'verify' => false
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', function () {
-    return view('admin/index');
-});
-// Route::get('/universitas', function () {
-//     return view('admin/universitas');
-// });
-Route::get('/tambah_universitas', function () {
-    return view('admin/tambah_universitas');
-});
+Route::prefix('admin')
+    ->middleware('admin')
+    ->group(function() {
+        Route::resource('universitas', UniversitasController::class);
 
-Route::resource('/universitas', 'App\Http\Controllers\UniversitasController');
+        Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+    });

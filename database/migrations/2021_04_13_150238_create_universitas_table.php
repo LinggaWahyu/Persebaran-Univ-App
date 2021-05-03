@@ -26,7 +26,7 @@ class CreateUniversitasTable extends Migration
             $table->enum('status', ['Kementerian Riset Teknologi dan Pendidikan Tinggi', 'Kementerian Agama', 'Kementerian Dalam Negeri', 'Kementerian Energi dan Sumber Daya Mineral', 'Kementerian Hukum dan HAM', 'Kementerian Pariwisata', 'Kementerian Kesehatan', 'Kementerian Keuangan', 'Kementerian Komunikasi dan Informatika', 'Kementerian Perhubungan', 'Kementerian Perindustrian', 'Kementerian Pertanian', 'Kementerial Sosial']);
             $table->integer('jumlah_mahasiswa');
             $table->string('logo')->nullable();
-            $table->longText('bidang_keilmuan')->nullable();
+            $table->string('bidang_keilmuan')->nullable();
             $table->timestamps();
         });
     }

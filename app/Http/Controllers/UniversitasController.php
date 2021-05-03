@@ -8,9 +8,26 @@ use App\Models\Province;
 use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
+use Illuminate\Support\Facades\Storage;
 
 class UniversitasController extends Controller
 {
+
+    private $statuses = [
+        'Kementerian Riset Teknologi dan Pendidikan Tinggi', 
+        'Kementerian Agama', 
+        'Kementerian Dalam Negeri',
+        'Kementerian Energi dan Sumber Daya Mineral',
+        'Kementerian Hukum dan HAM',
+        'Kementerian Pariwisata',
+        'Kementerian Kesehatan',
+        'Kementerian Keuangan',
+        'Kementerian Komunikasi dan Informatika',
+        'Kementerian Perhubungan',
+        'Kementerian Perindustrian',
+        'Kementerian Pertanian',
+        'Kementerian Sosial'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +38,11 @@ class UniversitasController extends Controller
         $univ = Universitas::join('provinces','universitas.id_provinsi', '=', 'provinces.id')
             ->join('regencies', 'universitas.id_kab_kota', '=', 'regencies.id')
             ->get(['universitas.*', 'provinces.name as provinsi', 'regencies.name as kab_kota']);
-        // dd($univ);
+
+        foreach ($univ as $unv) {
+            $unv->bidang_keilmuan = explode(',', $unv->bidang_keilmuan);
+        }    
+        // return dd($univ);
         return view('/admin/universitas', compact('univ'));
     }
 
@@ -32,7 +53,9 @@ class UniversitasController extends Controller
      */
     public function create()
     {
-        return view('/admin/tambah_universitas');
+        return view('/admin/tambah_universitas', [
+            'statuses' => $this->statuses
+        ]);
     }
 
     /**
@@ -45,6 +68,7 @@ class UniversitasController extends Controller
     {
 
         // dd($request->status);
+        
         $validated = $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
@@ -53,13 +77,25 @@ class UniversitasController extends Controller
             'latitude' => 'required',
             'longitude' => 'required',
             'status' => 'required',
+            'logo' => 'required',
+            'link_web' => 'required',
+            'no_telp' => 'required',
             'jumlah_mahasiswa' => 'required',
+            'bidang_keilmuan' => 'required'
         ]);
 
-        // dd($request->all());
-        Universitas::create($request->all());
+        $data = $request->all();
+        $data['bidang_keilmuan'] = implode(",", $data['bidang_keilmuan']);
 
-        return redirect('/universitas')->with('status', 'Tambah Data Universitas Berhasil');
+        // return dd($data);
+
+        if ($request->logo) {
+            $data['logo'] = $request->file('logo')->store('images/logo', 'public');
+        }
+
+        Universitas::create($data);
+
+        return redirect('/admin/universitas')->with('status', 'Tambah Data Universitas Berhasil');
     }
 
     /**
@@ -84,8 +120,11 @@ class UniversitasController extends Controller
         $univ = Universitas::join('provinces','universitas.id_provinsi', '=', 'provinces.id')
             ->join('regencies', 'universitas.id_kab_kota', '=', 'regencies.id')
             ->find($id, ['universitas.*', 'provinces.name as provinsi', 'regencies.name as kab_kota']);
-        // dd($univ);
-        return view('/admin/edit_universitas', compact('univ'));
+        // return dd($univ);
+        return view('admin.edit_universitas', [
+            'univ' => $univ,
+            'statuses' => $this->statuses
+        ]);
     }
 
     /**
@@ -98,21 +137,25 @@ class UniversitasController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->status);
-        Universitas::where('id', $id)
-            ->update([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'id_provinsi' => $request->id_provinsi,
-            'id_kab_kota' => $request->id_kab_kota,
-            'link_web' => $request->link_web,
-            'no_telp' => $request->no_telp,
-            'jumlah_mahasiswa' => $request->jumlah_mahasiswa,
-            'logo' => $request->logo,
-            'status' => $request->status,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-        ]);
-        return redirect('/universitas')->with('update', 'Ubah Data Universitas Berhasil');
+        $data = $request->all();
+
+        $univ = Universitas::find($id);
+
+        if ($request->logo) {
+            if ($univ->logo != null) {
+                Storage::delete('public/' . $univ->logo);
+            }
+            $data['logo'] = $request->file('logo')->store('images/logo', 'public');
+        }
+
+        if ($request->bidang_keilmuan) {
+            $data['bidang_keilmuan'] = implode(",", $data['bidang_keilmuan']);
+        }
+
+        $univ->fill($data);
+        $univ->save();
+
+        return redirect('/admin/universitas')->with('update', 'Ubah Data Universitas Berhasil');
     }
 
     /**
@@ -124,6 +167,6 @@ class UniversitasController extends Controller
     public function destroy($id)
     {
         Universitas::destroy($id);
-        return redirect('/universitas')->with('hapus', 'Hapus Data Universitas Berhasil');
+        return redirect('/admin/universitas')->with('hapus', 'Hapus Data Universitas Berhasil');
     }
 }

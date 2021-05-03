@@ -30,13 +30,22 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
 
     <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
-    <link href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css" rel="stylesheet">
+    <link
+      href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
+      rel="stylesheet"
+    />
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -73,12 +82,12 @@
             <!-- Menu Footer-->
             <li class="user-footer">
                 <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat"
+                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Sign out
                     </a>
-                    <form id="logout-form" action="#" method="POST"
-                          style="display: none;">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
                     </form>
                 </div>
             </li>
@@ -115,7 +124,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="/admin" class="nav-link active">
+            <a href="/admin" class="nav-link {{ (request()->is('admin')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
@@ -123,7 +132,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/universitas" class="nav-link">
+            <a href="/admin/universitas" class="nav-link {{ (request()->is('admin/universitas*')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Data Universitas
@@ -194,22 +203,23 @@
 <script src="{{ asset('Frontend/Admin/dist/js/demo.js') }}"></script>
 
 <script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-      });
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
     });
-  </script>
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+@stack('addon-script')
   
 @yield('script-body')
 </body>

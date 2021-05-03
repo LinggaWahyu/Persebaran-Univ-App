@@ -29,7 +29,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form action="/universitas/{{$univ->id}}" enctype="multipart/form-data"method="POST">
+                    <form action={{ route('universitas.update', $univ->id) }}" id="locations" enctype="multipart/form-data"method="POST">
                       @method('put')
                       @csrf
                       <div class="input-group mb-3">
@@ -48,21 +48,21 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1" style="width: 120px;">Provinsi</span>
                           </div>
-                          <select name="id_provinsi" class="custom-select">
-                            <option value="1">Jawa Timur</option>
-                            <option value="2">Jawa Tengah</option>
-                            <option value="3">Jawa Barat</option>
+                          <select name="id_provinsi" id="provinces_id" class="custom-select" v-if="provinces" v-model="provinces_id">
+                            {{-- <option value="{{ $univ->id_provinsi }}" selected>{{ $univ->provinsi }}</option> --}}
+                            <option v-for="province in provinces" :value="province.id">@{{ province.name }}</option>
                           </select>
+                          <select v-else class="form-control"></select>
                       </div>
                       <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1" style="width: 140px;">Kabupaten/Kota</span>
                           </div>
-                          <select name="id_kab_kota" class="custom-select">
-                            <option value="1">Malang</option>
-                            <option value="2">Blitar</option>
-                            <option value="3">Probolinggo</option>
+                          <select name="id_kab_kota" id="regencies_id" class="custom-select" v-if="regencies" v-model="regencies_id">
+                            {{-- <option value="{{ $univ->id_kab_kota }}" selected>{{ $univ->kab_kota }}</option> --}}
+                            <option v-for="regency in regencies" :value="regency.id">@{{ regency.name }}</option>
                           </select>
+                          <select v-else class="form-control"></select>
                       </div>
                       <div class="input-group mb-3">
                           <div class="input-group-prepend">
@@ -93,10 +93,13 @@
                             <span class="input-group-text" for="status" style="width: 120px;">Status</span>
                           </div>
                           <select class="custom-select" id="status" name="status">
-                            <option value="Kementerian Riset dan Pendidikan Tinggi">Kementerian Riset dan Pendidikan Tinggi</option>
-                            <option value="Kementerian Agama">Kementerian Agama</option>
-                            <option value="Kementerian Kesehatan">Kementerian Kesehatan</option>
-                            <option value="Kementerian Komunikasi dan Informatika">Kementerian Komunikasi dan Informatika</option>
+                            @foreach ($statuses as $status)
+                                @if ($status === $univ->status)
+                                    <option value="{{ $status }}" selected>{{ $status }}</option>
+                                @else
+                                    <option value="{{ $status }}">{{ $status }}</option>
+                                @endif
+                            @endforeach
                           </select>
                       </div>
                       <div class="input-group form-group mb-3">
@@ -200,8 +203,49 @@
       </section>
       <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-<script type="text/javascript">
+@endsection
+
+@push('addon-script')
+    <script src="/vendor/vue/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var locations = new Vue({
+        el: "#locations",
+        mounted() {
+            this.getProvincesData();
+        },
+        data: {
+            provinces: null,
+            regencies: null,
+            provinces_id: null,
+            regencies_id: null,
+        },
+        methods: {
+            getProvincesData() {
+                var self = this;
+                axios.get('{{ route('api-provinces') }}')
+                    .then(function(response) {
+                        self.provinces = response.data;
+                    });
+            },
+            getRegenciesData() {
+                var self = this;
+                axios.get('{{ url('api/regencies') }}/' + self.provinces_id)
+                    .then(function(response) {
+                        self.regencies = response.data;
+                    });
+            },
+        },
+        watch: {
+            provinces_id: function(val, oldVal) {
+                this.regencies_id = null;
+                this.getRegenciesData();
+            }
+        },
+      });
+    </script>
+
+    <script type="text/javascript">
     mapboxgl.accessToken =
         "pk.eyJ1IjoibGluZ2dhd2FoeXUiLCJhIjoiY2tuYzBsdTI3MXZoNDJ2bGdsMXZzcmszbCJ9.2-I9dM3g_HpoPcFbZzU9qQ";
 
@@ -214,6 +258,8 @@
 
       var marker = new mapboxgl.Marker();
 
+      marker.setLngLat([{{ $univ->longitude }}, {{ $univ->latitude }}]).addTo(map);
+
       map.on('click', function(e) {
         marker.remove();
         
@@ -225,5 +271,5 @@
         marker.setLngLat(e.lngLat).addTo(map);
       });
   </script>
-@endsection
+@endpush
   
