@@ -28,7 +28,7 @@
       class="navbar navbar-expand-lg navbar-light navbar-library fixed-top navbar-fixed-top"
     >
       <div class="container-fluid">
-        <a href="/index.html" class="navbar-brand mr-3">
+        <a href="{{ route('home') }}" class="navbar-brand mr-3">
           <img
             src="https://tigerware.lsu.edu/image/1cb577c8-6265-43fa-9ddd-b96ea3e73eb9.png?preset=Full"
             alt="Logo UIN"

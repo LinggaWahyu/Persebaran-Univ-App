@@ -15,16 +15,13 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes([
     'register' => false,
     'verify' => false
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/univ/{id}', [App\Http\Controllers\HomeController::class, 'detail'])->name('home.detail');
 
 Route::prefix('admin')
     ->middleware('admin')

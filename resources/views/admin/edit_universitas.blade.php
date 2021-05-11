@@ -206,7 +206,7 @@
 @endsection
 
 @push('addon-script')
-    <script src="/vendor/vue/vue.js"></script>
+    <script src="{{ asset('Frontend/vendor/vue/vue.js') }}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       var locations = new Vue({
